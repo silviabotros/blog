@@ -1,0 +1,11 @@
+baseURL = "https://www.dbsmasher.com/"
+languageCode = "en-us"
+title = "dbsmasher blog"
+copyright = "Copyright (c) 2017, all rights reserved."
+canonifyurls = true
+paginate = 3
+theme = "hugo-dusk"
+
+[params]
+  github = "silviabotros"
+
