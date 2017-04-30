@@ -4,7 +4,7 @@ title = "dbsmasher blog"
 copyright = "Copyright (c) 2017, all rights reserved."
 canonifyurls = true
 paginate = 3
-theme = "hugo-dusk"
+theme = "beautifulhugo"
 
 [params]
   github = "silviabotros"
