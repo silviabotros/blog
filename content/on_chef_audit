@@ -42,7 +42,6 @@ end
 The code to audit this block would look like this
 ```ruby
 control_group 'MySQL BackupTests : Archive access' do
-...
   control 'test_backup.sh' do
       describe file('/usr/local/bin/test_backup.sh') do
         it { should exist }
@@ -56,10 +55,14 @@ end
 
 As you can see, the audit part is very natural in its language, and the resources are quite simple to use. So how do we tell chef to run this audit code in our test environment?
 
-Presuming you use test kitchen, hyou need to edit that config to enable audit mode.
+Presuming you use test kitchen, you need to edit that config to enable audit mode.
 Under the provisioner section of your `.kitchen.yml` config file, add these 2 lines:
 
 ```
 client_rb:
   audit_mode: :enabled
 ```
+
+So what are the advantages of audit_mode vs the old minitests? well besides the fact that minitest is deprecated, I find that having the test code as part of the recipe tree (and better yet, can even be *in* the recipe directly) gives a very nice single view of what every recipe should look like and what my view of the state of the host should be based on that. That should come even handier for anyone trying to look at a cookbook I wrote and understand what the cookbook is supposed to do.
+
+Aa I started a journey with chef [a few years back](https://dbsmasher.com/2015/02/12/-learning-configuration-management-as-a-dba/), converting my knowledge on how to build our databases into repeatable cookbooks, I will be spending the next months with the rest of our data ops team converting our resources into chef audit code.
